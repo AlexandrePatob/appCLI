@@ -40,6 +40,18 @@ module.exports = {
       print.info(`Vamos trocar ${numero} nomes!`)
 
       // Abrir arquivo .text / .doc
+      const caminho = path.join(__dirname, '..', 'document', 'teste.txt');
+      const doc = path.join(__dirname, '..', 'document', 'testeDoc.doc');
+      const arquivo = fs.readFileSync(doc, 'utf-8', function(err, data) {
+        if (err) throw err
+        console.log(data)
+      })
+      if(arquivo){
+        print.success('Arquivo Aberto')
+        print.success(arquivo) // Dados dentro do arquivo.
+      }
+      var result = arquivo.replace(/Olá/g, 'Oi');
+      print.info(result)
       
     } else {
       print.error(`Digite o nome e a senha corretos!`)
